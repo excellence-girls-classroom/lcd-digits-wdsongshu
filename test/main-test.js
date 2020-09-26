@@ -4,11 +4,11 @@ describe('lcd-digits', function () {
     beforeEach(function () {
         inputs = '910';
     });
-    describe('unit teat', function () {
-        describe('buildSplitedString teat', function () {
+
+    describe('unit test', function () {
+
+        describe('buildSplitedString test', function () {
             it('return buildSplitedString', function () {
-
-
                 var splitedString = buildSplitedString(inputs);
 
                 var expectText = ['9', '1', '0'];
@@ -16,34 +16,35 @@ describe('lcd-digits', function () {
                 expect(splitedString).toEqual(expectText);
             });
         });
+
         describe('buldPrintItems test', function () {
             it('return buldPrintItems', function () {
                 var lcdNumberItems = loadAllItems();
-                var splitedString = buildSplitedString(inputs);
 
-                var printIems = buildPrintItems(splitedString, lcdNumberItems);
+                var splitedString = ['9', '1', '0'];
 
-                var expectText = [{
-                    number: 9,
-                    lcdNumber: ['._.', '|_|', '..|']
-                },
-                    {
-                        number: 1,
-                        lcdNumber: ['...', '..|', '..| ']
-                    },
-                    {
-                        number: 0,
-                        lcdNumber: ['._.', '|.|', '|_|']
-                    }
-                ];
+                var printItems = buildPrintItems(splitedString, lcdNumberItems);
 
+                var expectText =
+                    [
+                        {
+                            number: 9,
+                            lcdNumber: ['._.', '|_|', '..|']
+                        },
+                        {
+                            number: 1,
+                            lcdNumber: ['...', '..|', '..|']
+                        },
+                        {
+                            number: 0,
+                            lcdNumber: ['._.', '|.|', '|_|']
+                        }
+                    ];
 
-
-                expect(printIems).toEqual(expectText);
+                expect(printItems).toEqual(expectText);
             });
         });
     });
-
 
     describe('integration test', function () {
         describe('print test', function () {
@@ -51,13 +52,13 @@ describe('lcd-digits', function () {
 
                 spyOn(console, 'log');
 
-                printReceipt(inputs);
+                printLcdNumber(inputs);
 
                 var expectText =
-                    '._. ... ._.\n' +
-                    '|_| ..| |.|\n' +
-                    '..| ..|  |_|\n'
-                ;
+                        '._. ... ._.\n' +
+                        '|_| ..| |.|\n' +
+                        '..| ..| |_|\n'
+                    ;
                 expect(console.log).toHaveBeenCalledWith(expectText);
             });
         });

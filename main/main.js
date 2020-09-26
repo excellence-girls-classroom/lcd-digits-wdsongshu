@@ -1,4 +1,4 @@
-function printReceipt(inputs) {
+function printLcdNumber(inputs) {
 
     var splitedString = buildSplitedString(inputs);
 
@@ -7,7 +7,6 @@ function printReceipt(inputs) {
 
     var printText = buildPrint(printItems);
 
-    console.log(printText);
 }
 
 
@@ -48,22 +47,19 @@ function findLcdNumber(splitedNumber, lcdNumberItems) {
 
 function buildPrint(printItems) {
     var printText = '';
-    var flag = 0;
 
-    for(var i = 0 ; i < printItems.length;i++) {
+    for (var i = 0; i < printItems.length; i++) {
         var print = '';
         printItems.forEach(function (printItem) {
-            var item = printItem.lcdNumber[flag];
-            if(!print)
-            {print+= item;}
-            else
-            {print += ' ' +item ;}
-
+            var item = printItem.lcdNumber[i];
+            if (!print) {
+                print += item;
+            } else {
+                print += ' ' + item;
+            }
         });
-
-        flag++;
-        printText += print +'\n';
+        printText += print + '\n';
     }
 
-    return printText;
+    console.log(printText);
 }

@@ -1,12 +1,12 @@
 function loadAllItems() {
     return [
         {
-           number:0,
+            number:0,
             lcdNumber:['._.','|.|','|_|']
         },
         {
             number:1,
-            lcdNumber:['...','..|','..| ']
+            lcdNumber:['...','..|','..|']
         },
         {
             number:2,
